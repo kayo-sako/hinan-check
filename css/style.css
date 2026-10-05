@@ -1,0 +1,65 @@
+/* =========================================================
+   デザイントークン（ライト/ダーク）と最小限の独自スタイル
+   レイアウト：スマホは1カラム、PCは「流れ」パネル＋本体の2カラム
+   色は R G B の3値で定義（Tailwind の不透明度指定 bg-brand/10 に対応）
+   ========================================================= */
+:root {
+  --bg: 245 248 243;       /* 地色：わずかに緑寄りの白 */
+  --surface: 255 255 255;
+  --ink: 28 40 34;
+  --muted: 92 108 99;
+  --line: 219 228 221;
+  --brand: 30 133 74;      /* 基調の緑（行動・進む） */
+  --shelter: 205 56 72;    /* ① 指定避難所：赤 */
+  --home: 30 133 74;       /* ② 自宅待機：緑 */
+  --car: 36 87 181;        /* ③ 車・知人宅：青 */
+  --warn: 214 146 14;      /* △・注意：黄土 */
+  --sun: 255 246 214;      /* 注意書きの面 */
+  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 17 23 20; --surface: 27 35 31; --ink: 230 238 232; --muted: 160 177 168; --line: 47 60 53;
+    --brand: 72 190 120; --shelter: 240 112 124; --home: 72 190 120; --car: 116 160 240; --warn: 238 186 74; --sun: 52 45 22;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: 17 23 20; --surface: 27 35 31; --ink: 230 238 232; --muted: 160 177 168; --line: 47 60 53;
+  --brand: 72 190 120; --shelter: 240 112 124; --home: 72 190 120; --car: 116 160 240; --warn: 238 186 74; --sun: 52 45 22;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ダーク時、白文字ボタンの背景が明るくなりすぎないよう調整 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .text-white { color: rgb(17 23 20); }
+}
+:root[data-theme="dark"] .text-white { color: rgb(17 23 20); }
+
+button { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid rgb(var(--brand) / 0.6); outline-offset: 2px; border-radius: 10px; }
+.btn-press { transition: transform .12s ease, filter .15s ease, background-color .15s ease, border-color .15s ease; }
+.btn-press:active:not(:disabled) { transform: translateY(2px); }
+
+/* 画面切り替え・展開のアニメーション（表示状態から始まる） */
+@keyframes screenIn { from { opacity: .4; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes answerIn { from { opacity: .5; } to { opacity: 1; } }
+.screen-in { animation: screenIn .35s ease-out both; }
+.answer-in { animation: answerIn .25s ease-out both; }
+.gauge-arc { transition: stroke-dashoffset .8s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .screen-in, .answer-in { animation: none; }
+  .gauge-arc, .btn-press { transition: none; }
+}

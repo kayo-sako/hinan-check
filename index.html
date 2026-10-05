@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>災害時 避難方法チェック</title>
+<meta name="description" content="いくつかの質問に答えて、自分に合った避難方法と、起こりうる問題・備えのポイントを確認できます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  /* Tailwind 設定：色は CSS 変数（css/style.css）を参照 */
+  const v = (n) => `rgb(var(--${n}) / <alpha-value>)`;
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: v('bg'), surface: v('surface'), ink: v('ink'), muted: v('muted'), line: v('line'),
+          brand: v('brand'), shelter: v('shelter'), home: v('home'), car: v('car'), warn: v('warn'), sun: v('sun'),
+        },
+        fontFamily: { display: 'var(--font-display)', sans: 'var(--font-body)' },
+      },
+    },
+  };
+</script>
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="mx-auto max-w-6xl px-4 py-6 sm:py-8 lg:grid lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-10">
+    <aside id="side" class="hidden lg:block lg:sticky lg:top-24 self-start"></aside>
+    <main id="screen" class="mx-auto w-full max-w-2xl min-w-0" aria-live="polite"></main>
+  </div>
+
+  <div id="footer"></div>
+  <div id="modal"></div>
+
+  <!-- 設定・データ -->
+  <script src="js/config.js"></script>
+  <script src="js/data/routes.js"></script>
+  <script src="js/data/problems.js"></script>
+  <!-- コンポーネント -->
+  <script src="js/components/icons.js"></script>
+  <script src="js/components/ui.js"></script>
+  <script src="js/components/qrcode.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script src="js/components/top.js"></script>
+  <script src="js/components/questions.js"></script>
+  <script src="js/components/problemList.js"></script>
+  <script src="js/components/checklist.js"></script>
+  <script src="js/components/result.js"></script>
+  <script src="js/components/hints.js"></script>
+  <!-- アプリ本体 -->
+  <script src="js/app.js"></script>
+</body>
+</html>
