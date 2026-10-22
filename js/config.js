@@ -13,9 +13,9 @@
 window.Hinan = window.Hinan || {};
 
 window.Hinan.config = {
-  SITE_URL: 'https://kayo-sako.github.io/hinan-check/',
-  SITE_NAME: '災害時 避難方法チェック',
-  STORAGE_KEY: 'hinan-check-v1',
-  GA_ID: 'G-CZ8XSYE45L',
-  RESULT_ENDPOINT: '',
+  SITE_URL: "https://kayo-sako.github.io/hinan-check/",
+  SITE_NAME: "災害時 避難方法チェック",
+  STORAGE_KEY: "hinan-check-v1",
+  GA_ID: "G-CZ8XSYE45L",
+  RESULT_ENDPOINT: "https://script.google.com/macros/s/……/exec",
 };
