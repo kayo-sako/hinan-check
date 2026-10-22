@@ -8,7 +8,7 @@
   };
   const PREV = { damage: 'top', route: 'damage', problems: 'route', check: 'problems', result: 'check', hints: 'result' };
 
-  const initial = () => ({ step: 'top', damaged: null, route: null, confirmed: [], open: null, checks: {}, showDetail: false, qr: false });
+  const initial = () => ({ step: 'top', damaged: null, route: null, confirmed: [], open: null, checks: {}, showDetail: false, qr: false, runId: null, sentRunId: null });
 
   // 途中経過をこのブラウザに保存（使えない環境でも動作します）
   const load = () => {
@@ -27,15 +27,21 @@
     $('#footer').innerHTML = H.Footer();
     $('#modal').innerHTML = state.qr ? H.QrModal() : '';
     document.body.style.overflow = state.qr ? 'hidden' : '';
+    // 計測（設定がある場合のみ動作）
+    H.trackStep(state);
+    if (state.step === 'result') {
+      if (!state.runId) state.runId = H.newRunId();
+      if (H.sendResult(state)) state.sentRunId = state.runId;
+    }
     if (scroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
     save();
   }
   const go = (step) => { state.step = step; state.open = null; state.showDetail = false; render(true); };
 
   const actions = {
-    start: () => go('damage'),
+    start: () => { state.runId = H.newRunId(); go('damage'); },
     home: () => { state = { ...initial() }; render(true); },
-    restart: () => { state = { ...initial(), step: 'damage' }; render(true); },
+    restart: () => { state = { ...initial(), step: 'damage', runId: H.newRunId() }; render(true); },
     back: () => go(PREV[state.step] || 'top'),
     damage: (el) => {
       state.damaged = el.dataset.value;

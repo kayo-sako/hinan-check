@@ -47,6 +47,11 @@ window.Hinan.checklist = [
   {
     id: 'toilet', label: 'トイレの備え', icon: 'toilet',
     hint: '断水・停電でトイレが使えないことがあります。携帯トイレ・消臭袋・トイレットペーパー・除菌用品・足元を照らす灯りを用意しましょう。トイレを我慢するために水分を控えるのは危険です。',
+    link: {
+      url: 'https://youtu.be/1hUrlYY6n_s',
+      label: '動画で見る：段ボールトイレの作り方',
+      note: 'YouTube「【防災】段ボールでまもろう」',
+    },
   },
   {
     id: 'power', label: '電気・明かりの備え', icon: 'bolt',

@@ -13,9 +13,15 @@
 - js/components/ …… 画面ごとの部品
   - top.js（①トップ） / questions.js（②自宅の状況・③避難先） / problemList.js（④問題点の確認）
   - checklist.js（⑤備えチェック） / result.js（⑥結果・スコア） / hints.js（⑦備えのヒント）
-  - layout.js（ヘッダー・流れパネル・QRモーダル・フッター） / ui.js（共通ボタン等） / icons.js / qrcode.js（QR生成）
+  - layout.js（ヘッダー・流れパネル・QRモーダル・フッター） / ui.js（共通ボタン等） / icons.js / qrcode.js（QR生成） / analytics.js（計測）
 - js/app.js …… 状態管理と画面切り替え
 
 ## 内容を更新するには
 ファイルを編集して main ブランチに保存すると、1〜2分でサイトに反映されます。
 公開URLを変える場合は js/config.js の SITE_URL も書き換えてください。
+
+## 利用者数・結果の集計
+- js/components/analytics.js …… 計測（Googleアナリティクス／結果の記録）
+- apps-script/Code.gs …… 結果を Google スプレッドシートに記録・集計する Apps Script
+- js/config.js の GA_ID（Googleアナリティクスの測定ID）と RESULT_ENDPOINT（Apps Script のウェブアプリURL）を設定すると有効になります。空のままなら何も送信しません。
+- 送信するのは、自宅の損壊の有無・避難方法・問題点の確認数・備えのチェック（○△×）・スコア・端末の種類のみです。

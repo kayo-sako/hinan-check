@@ -75,6 +75,10 @@ window.Hinan = window.Hinan || {};
           </div>`).join('')}
       </div>
       <p class="mt-2 text-xs text-muted text-center">3つの避難方法から、それぞれの問題点と対処方法を確認できます</p>
+      <p class="mt-5 flex gap-2 rounded-xl border border-line bg-surface px-3 py-2.5 text-xs leading-relaxed text-muted">
+        ${H.icon('info', 'w-4 h-4 mt-0.5')}
+        <span>回答内容（選んだ避難方法・備えのチェック・スコア）は、個人を特定しない形で防災対策の参考として集計します。名前や住所などはお聞きしません。</span>
+      </p>
     </section>`;
   };
 })(window.Hinan);

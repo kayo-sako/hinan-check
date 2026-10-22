@@ -21,6 +21,12 @@ window.Hinan = window.Hinan || {};
             ${m ? `<span class="shrink-0 rounded-full bg-${col} text-white text-xs font-bold px-2 py-0.5">${m.sym} ${m.label}</span>` : ''}
           </div>
           <p class="text-sm leading-relaxed text-ink/85 mt-1">${it.hint}</p>
+          ${it.link ? `
+          <a href="${H.esc(it.link.url)}" target="_blank" rel="noopener noreferrer"
+            class="btn-press mt-3 inline-flex items-center gap-2 rounded-lg border border-${col}/40 bg-surface px-3 py-2 text-sm font-bold text-${col} hover:bg-${col}/5">
+            ${H.icon('play', 'w-4 h-4')}<span>${H.esc(it.link.label)}</span>${H.icon('right', 'w-4 h-4')}
+          </a>
+          ${it.link.note ? `<p class="mt-1 text-xs text-muted">${H.esc(it.link.note)}（外部サイトが開きます）</p>` : ''}` : ''}
         </div>
       </li>`;
     };

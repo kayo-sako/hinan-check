@@ -31,6 +31,12 @@ window.Hinan = window.Hinan || {};
         <div id="ans-${i}" class="answer-in border-t border-line bg-${c}/[0.04] px-4 py-4">
           <p class="text-xs font-bold text-${c} mb-2 tracking-wider">対処方法</p>
           <div class="grid gap-3 text-[0.92rem] text-ink/90">${H.ui.richText(p.a)}</div>
+          ${p.link ? `
+          <a href="${H.esc(p.link.url)}" target="_blank" rel="noopener noreferrer"
+            class="btn-press mt-4 inline-flex items-center gap-2 rounded-lg border border-${c}/40 bg-surface px-3 py-2 text-sm font-bold text-${c} hover:bg-${c}/5">
+            ${H.icon('play', 'w-4 h-4')}<span>${H.esc(p.link.label)}</span>${H.icon('right', 'w-4 h-4')}
+          </a>
+          ${p.link.note ? `<p class="mt-1 text-xs text-muted">${H.esc(p.link.note)}（外部サイトが開きます）</p>` : ''}` : ''}
           <button type="button" data-action="confirm" data-value="${i}"
             class="btn-press mt-4 w-full inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-bold
             ${ok ? 'bg-home/15 text-home' : `bg-${c} text-white`}">
