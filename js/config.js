@@ -17,5 +17,6 @@ window.Hinan.config = {
   SITE_NAME: "災害時 避難方法チェック",
   STORAGE_KEY: "hinan-check-v1",
   GA_ID: "G-CZ8XSYE45L",
-  RESULT_ENDPOINT: "https://script.google.com/macros/s/……/exec",
+  RESULT_ENDPOINT:
+    "https://script.google.com/macros/s/AKfycbwcSjLe69fK3X5mkgzJU9WQtMN0lTeUBWBvmuAGTfuVJm993xPnUkf48ysH84raRXan/exec",
 };
